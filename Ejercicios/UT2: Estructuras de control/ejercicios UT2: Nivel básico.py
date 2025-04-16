@@ -114,17 +114,37 @@ else:
 # Escribe un programa que pida el precio de un producto y, 
 # si supera los 100€, aplique un descuento del 10%. Muestra el precio final.
 
-precio = float(input("Indica el precio del producto: "))
+""" precio = float(input("Indica el precio del producto: "))
 descuento = precio * 0.10
 if precio > 100:
     print("El resultado es:", precio - descuento)
 elif precio <= 100:
     print("El precio no incluye descuento")
 else:
-    print("Introduce un numero idiota")
+    print("Introduce un numero idiota") """
 
 # Ejercicio 10
 # Escribe un programa que pida día, mes y año. Comprueba si la fecha introducida es válida.
 # Recuerda que, en los años bisiestos, febrero tiene 29 días.
 # Puedes usar el algoritmo del ejercicio 6 para determinar si un año es bisiesto.
 
+dia = int(input("Introduce un día: "))
+mes = int(input("Introduce un mes(en numero): "))
+year = int(input("Introduce un año: "))
+# validamos el mes
+if mes < 1 or mes > 12:
+    # comprobamos que el año sea bisiesto
+    bisiesto = (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+    # ahora validamos los día según el mes
+    if dia < 1:
+        print("El día introducido no es correcto.")
+    elif mes == 2 and bisiesto and dia > 29:
+        print("Febrero no tiene mas de 29 días.")
+    elif mes == 2 and not bisiesto and dia > 28:
+        print("Febrero no tienes mas de 28 días.")
+    elif mes in (4, 6, 9, 11) and dia > 30:
+        print("abril, junio, septiembre y noviembre no tienen mas de 30 días.")
+    elif mes in (1, 3, 5, 7, 8, 10, 12) and dia > 31:
+        print("enero, marzo, mayo, julio, agosto, octubre y diciembre no tienen mas de 31 días.")
+else:
+    print(f"La fecha {dia}/{mes}/{year} es correcta.")
