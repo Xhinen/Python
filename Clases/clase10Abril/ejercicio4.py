@@ -7,7 +7,7 @@ if num_multiplo % 3 == 0:
         print("Múltiplo de 3 y de 5.")
     else:
         print("Múltiplo de 3.")
-elif num_multiplo %  5== 0:
+elif num_multiplo % 5 == 0:
     print("Múltiplo de 5.")
 else:
     print("No es múltiplo de 3 ni de 5.")
