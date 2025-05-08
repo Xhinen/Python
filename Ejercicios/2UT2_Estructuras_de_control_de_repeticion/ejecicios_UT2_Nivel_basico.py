@@ -37,7 +37,7 @@ for i in range(1, 11, 1):
 # Escribe un programa que pida al usuario un número entero positivo e imprima la suma de los números pares por un lado
 # y la suma de los números impares por otro. El programa debe imprimir ambos resultados.
 
-numero = int(input("Introduce un número entero positivo: "))
+""" numero = int(input("Introduce un número entero positivo: "))
 suma_pares = 0
 suma_impare = 0
 
@@ -48,4 +48,40 @@ for i in range(1, numero+1):
         suma_impare +=i
 
 print(f"Suma de los números pares: {suma_pares}")
-print(f"Suma de los números impares: {suma_impare}")
+print(f"Suma de los números impares: {suma_impare}") """
+
+# Ejercicio 15
+# Escribe un programa que pida al usuario un número entero positivo y calcules la suma de la potencia de 3 de cada número desde 1 hasta el número introducido. 
+# El programa debe imprimir el resultado.
+
+# Para que se entienda mejor, si el usuario introduce 3, el programa debe calcular:
+# 1^3 + 2^3 + 3^3 = 1 + 8 + 27 = 36
+
+""" numero = int(input("Introduce un número entero positivo: "))
+suma_potencia = 0
+
+for i in range(1, numero+1):
+    suma_potencia +=i**3
+
+print(f"La suma de los numero elevado a 3 es: {suma_potencia}") """
+
+# Ejercicio 16
+# Escribe un programa que pida al usuario un número entero positivo e imprima la lista de divisores de ese número. 
+# Un divisor de un número n es un número entero que divide a n sin dejar residuo. 
+# El programa debe imprimir todos los divisores del número introducido.
+
+""" numero = int(input("Introduce un número entero positivo: "))
+
+for i in range(1, numero + 1):
+    if numero % i == 0:
+        print(f"{i} es divisor de {numero}") """
+
+
+#Solucion profesor
+numero = int(input("Introduce un número entero positivo: "))
+
+print(f"Los divisores de {numero} son: ", end=" ")
+for i in range(1, numero + 1):
+    if numero % i == 0:
+        print(i, end=" ")
+print()
