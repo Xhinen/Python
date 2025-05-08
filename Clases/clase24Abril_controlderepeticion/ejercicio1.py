@@ -14,7 +14,7 @@
         break
     print(i) """
 
-# Ejercicio 1 - Contador¶
+# Ejercicio 1 - Contador
 # Escribe un programa que pida al usuario un número entero positivo e imprima los números desde el 0 hasta ese número (incluido). 
 # El programa debe imprimir los números en cada iteración.
 
