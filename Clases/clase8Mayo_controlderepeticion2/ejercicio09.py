@@ -13,3 +13,4 @@ while numero != 0:
 print(f"El resultado es {resultado}")
 
 
+
