@@ -78,10 +78,42 @@ for i in range(1, numero + 1):
 
 
 #Solucion profesor
-numero = int(input("Introduce un número entero positivo: "))
+""" numero = int(input("Introduce un número entero positivo: "))
 
 print(f"Los divisores de {numero} son: ", end=" ")
 for i in range(1, numero + 1):
     if numero % i == 0:
         print(i, end=" ")
-print()
+print() """
+
+# Ejercicio 17
+# Escribe un programa que reciba un número entero positivo y una letra.
+# El programa debe imprimir la letra tantas veces como el número introducido.
+
+""" num_positivo = int(input("Introduce un número positivo: "))
+letra = str(input("introduce una letra: "))
+
+for i in range (num_positivo):
+    print(f"{letra}")
+
+print() """
+
+# Ejercicio 18
+# Escribe un programa que dado una serie de números introducidos por el usuario, hasta que introduzca un -1, 
+# imprima el número introducido sumándole 1. El programa debe imprimir todos los números introducidos, menos el -1, sumándoles 1.
+
+""" num = int(input("Introduce un número(-1 para acabar): "))
+
+while num != -1:
+    print(f"{num + 1}")
+    num = int(input("Introduce un número(-1 para acabar): ")) """
+
+
+# Ejercicio 19
+# Escribe un programa que dado una serie de notas introducidas por el usuario, hasta que introduzca un -1,
+# imprima el número de notas correctas introducidas, la media de las notas y cuantas de estas notas son 10.
+# El programa debe imprimir la media de todas las notas introducidas, menos el -1.
+
+nota = int(input("Introduce la nota: "))
+
+while nota != -1:
