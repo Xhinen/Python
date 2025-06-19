@@ -9,3 +9,15 @@ def imprimir(mensaje, color=None):
         mensaje = color + mensaje + Style.RESET_ALL
     
     print(mensaje)
+
+
+def imprimir_con_marco(mensaje, color=None):
+    """ 
+    --------
+    | Hola |
+    -------- 
+    """
+    mensaje = f"| {mensaje} |"
+    barra = "-"*len(mensaje)
+    imprimir(barra + "\n" + mensaje+ "\n" + barra + Style.RESET_ALL)
+    pass
