@@ -1,6 +1,7 @@
+import json
 #Creamos unas preguntas de ejemplo para nuestro cuestionario y así poder probar el programa mas adelante
 #Para ellos creamos una función con las preguntas
-def preguntas_cuestionario():
+""" def preguntas_cuestionario():
     preguntas = [
         {
             "pregunta": "¿Cuál es la capital de España?",
@@ -19,25 +20,87 @@ def preguntas_cuestionario():
         }
 
     ]
-    return preguntas
+    return preguntas """
+
+# Importamos a través de una funciona las preguntamos que hemos creado en el archivo json.
+def preguntas_cuestionario():
+    with open("/home/xhinen/Documents/CursorRepo/Python/Proyecto1GeneradorCuestionarios/json/preguntas.json", "r") as archivo: 
+        return json.load(archivo)
 
 
-# Vamos a crear una función para mostrar las preguntas.
+# Vamos a crear una función para mostrar las preguntas y su respectivas respuestas.
 def mostrar_pregunta(preguntas):
     print(preguntas["pregunta"])
-    for opciones in preguntas["opciones"]:
+    for opciones in preguntas["opciones"]: #Con el for recorremos las respuestas y las imprimimos en pantalla
         print(opciones)
 
-# Ahora creamos una función para la respuesta del usuario
-def respuesta_usuario():
+# Ahora creamos una función para la obtener la respuesta del usuario y evaluarla.
+def respuesta_pregunta():
+    #Creamos un bucle while ya que necesitas un bucle infinito hasta que se ingrese una respuesta válida.
     while True:
-        respuesta = input("Elige una respuesta: ").upper() #Añadimos el método upper por si el usuario introduce la respuesta en minúscula convertirla en mayúscula
-        if respuesta in ["A", "B", "C", "D"]:
-            return respuesta
-        print("Respuesta no válida!, introduce una respuesta válida(A, B, C o D)")
+        respuesta = input("Elige una respuesta: ").upper() #Se pide la respuesta y la pasamos a mayúsculas con el método upper.
+        if respuesta in ["A", "B", "C", "D"]: # Usamos un condiconal if para comprobar que la respuesta este dentro de las válidas.
+            return respuesta # Y si es válida la devolvemos.
+        print("Respuesta no válida!, introduce una respuesta válida(A, B, C o D)") # Si no es válida mostramos el mensaje de error y como es un bucle while volverá a preguntar por una respuesta correcta.
 
-# Funcion para corregir la respuesta del usuario
+# Funcion para ver si la respuesta del usuario es correcta.
 def comprobar_respuesta(resp, correcta):
-    return resp == correcta
+    return resp == correcta # Comparamos la respuesta del usuario con la respuesta correcta.
 
-# Y ahora mostramos los resultados
+# Función para mostrar los resultados.
+def mostrar_resultados(aciertos, total):
+    porcentaje = (aciertos / total) * 100 # Calculamos el porcentaje de aciertos.
+    print(f"\nResultados:") 
+    print(f"Preguntas: {total}") # Imprimimos el número de preguntas.
+    print(f"Aciertos: {aciertos}") # Imprimimos el número de aciertos. 
+    print(f"Porcentaje: {porcentaje:.1f}") # Imprimimos el porcentaje de aciertos sin decimales.
+
+    # Ahora mostramos un mensaje basandonos en el porcentaje.
+    if porcentaje >= 80: 
+        print("Seguro que has hecho trampa...")
+    elif porcentaje >= 60:
+        print("No esta mal...")
+    else:
+        print(f"Tu porcentaje de aciertos ha sido del {porcentaje:.1f}\nMenudo parguela, analfabeto!")
+
+# Creamos la función del programa principal
+def main():
+    preguntas = preguntas_cuestionario() # Cargamos las preguntas del archivo json que hemos importado antes.
+
+    while True: # Creamos un bucle while para que se ejecute de nuevo en el caso de que el usuario introduzca una opción no válida.
+        # Creamos el menú de la aplicación.
+        print("\n=== MENÚ ===")
+        print("1 - Empezar el cuestionario")
+        print("2 - Salir")
+
+        opcion = input("Elige una opción: ") # Le pedimos al usuario que elija una opción.
+
+        # Con la opción uno iniciamos el cuestionario.
+        if opcion == "1":
+            nombre = input("Dime tu nombre: ")
+            aciertos = 0 # Inicializamos el contador de aciertos a 0
+
+            # Recorremos todas las preguntas del archivo json.
+            for x in preguntas:
+                mostrar_pregunta(x) # Mostramos la pregunta.
+                respuesta_usuario = respuesta_pregunta() # Obtenemos la respuesta
+                if comprobar_respuesta(respuesta_usuario, x["respuesta_correcta"]): # Evaluamos que la respuesta sea correcta.
+                    print("Respuesta correcta!!") # Imprimimos un mensaje en el caso de que sea correcta.
+                    aciertos += 1 # Aumentamos el indicador de aciertos.
+                else:
+                    print("Incorrecto pringao") # Mensaje en el caso de que la respuesta sea incorrecta.
+
+            mostrar_resultados(aciertos, len(preguntas)) # Mostramos los resultados del cuestionario.
+
+        # Usamos elif para la opción 2 del programas para salir de este.
+        elif opcion == "2":
+            print("Ta luegooo.")
+            break
+
+        # Por ultimo, un mensaje en el caso de que introduzca una opción que no esté en el menú.
+        else:
+            print("Opción no válida, pulsa 1 para empezar el cuestionario o 2 para salir del programa.")
+
+# Creamos el punto de entrada del programa.
+if __name__ == "__main__":
+    main() # Ejecutamos la función principal de programa.

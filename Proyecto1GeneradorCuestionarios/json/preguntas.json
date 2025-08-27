@@ -1,0 +1,72 @@
+[
+    {
+      "pregunta": "¿Cuál es la capital de Francia?",
+      "opciones": ["A. Madrid", "B. Roma", "C. París", "D. Berlín"],
+      "respuesta_correcta": "C"
+    },
+    {
+      "pregunta": "En Linux, ¿qué comando se usa para listar archivos en un directorio?",
+      "opciones": ["A. ls", "B. cd", "C. mkdir", "D. rm"],
+      "respuesta_correcta": "A"
+    },
+    {
+      "pregunta": "¿Qué protocolo se utiliza para asignar direcciones IP automáticamente?",
+      "opciones": ["A. FTP", "B. DNS", "C. DHCP", "D. ARP"],
+      "respuesta_correcta": "C"
+    },
+    {
+      "pregunta": "¿Cuál es el puerto por defecto del servicio HTTP?",
+      "opciones": ["A. 21", "B. 22", "C. 25", "D. 80"],
+      "respuesta_correcta": "D"
+    },
+    {
+      "pregunta": "¿En qué capa del modelo OSI trabaja principalmente un switch?",
+      "opciones": ["A. Capa 1 (Física)", "B. Capa 2 (Enlace)", "C. Capa 3 (Red)", "D. Capa 4 (Transporte)"],
+      "respuesta_correcta": "B"
+    },
+    {
+      "pregunta": "¿Qué extensión de archivo corresponde a JSON?",
+      "opciones": ["A. .xml", "B. .json", "C. .csv", "D. .txt"],
+      "respuesta_correcta": "B"
+    },
+    {
+      "pregunta": "El comando 'ping' sirve para...",
+      "opciones": [
+        "A. borrar archivos",
+        "B. comprobar la conectividad con otro equipo",
+        "C. apagar el sistema",
+        "D. instalar paquetes"
+      ],
+      "respuesta_correcta": "B"
+    },
+    {
+      "pregunta": "En Python, ¿cómo se lee entrada del usuario por consola?",
+      "opciones": ["A. scan()", "B. input()", "C. readline()", "D. ask()"],
+      "respuesta_correcta": "B"
+    },
+    {
+      "pregunta": "¿Qué sentencia SQL se usa para consultar datos de una tabla?",
+      "opciones": ["A. SELECT", "B. INSERT", "C. DELETE", "D. UPDATE"],
+      "respuesta_correcta": "A"
+    },
+    {
+      "pregunta": "¿Cuál es la máscara de red por defecto de una red de clase C?",
+      "opciones": ["A. 255.0.0.0", "B. 255.255.0.0", "C. 255.255.255.0", "D. 255.255.255.252"],
+      "respuesta_correcta": "C"
+    },
+    {
+      "pregunta": "¿Cuál de los siguientes es un sistema operativo libre?",
+      "opciones": ["A. Windows 11", "B. macOS", "C. iOS", "D. GNU/Linux"],
+      "respuesta_correcta": "D"
+    },
+    {
+      "pregunta": "¿Qué significa la sigla DNS?",
+      "opciones": [
+        "A. Dynamic Number System",
+        "B. Domain Name System",
+        "C. Digital Network Service",
+        "D. Direct Name Server"
+      ],
+      "respuesta_correcta": "B"
+    }
+  ]
