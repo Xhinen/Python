@@ -1,4 +1,5 @@
 import json
+import os
 #Creamos unas preguntas de ejemplo para nuestro cuestionario y así poder probar el programa mas adelante
 #Para ellos creamos una función con las preguntas
 """ def preguntas_cuestionario():
@@ -22,11 +23,19 @@ import json
     ]
     return preguntas """
 
+# NOTA IMPORTANTE: TUVE QUE TIRAR UN POCO DE PARA RESOLVER EL PROBLEMA DE IMPORTAR EL ARCHIVO JSON, YA QUE POR DEFECTO
+# PYTHON USA LA RUTA DEL PROYECTO COMO LA BASE Y POR LO QUE EL CODIGO DE ABAJO NO FUNCIONABA SI LA RUTA NO ERA ABSOLUTA.
+""" def preguntas_cuestionario():
+    with open("preguntas.json", "r") as archivo: 
+        return json.load(archivo) """
+
 # Importamos a través de una funciona las preguntamos que hemos creado en el archivo json.
 def preguntas_cuestionario():
-    with open("/home/xhinen/Documents/CursorRepo/Python/Proyecto1GeneradorCuestionarios/json/preguntas.json", "r") as archivo: 
+    directorio_script = os.path.dirname(os.path.abspath(__file__)) # Obtener la ruta del directorio donde está este script
+    ruta_completa = os.path.join(directorio_script, "preguntas.json") # Construir la ruta completa al archivo JSON
+    
+    with open(ruta_completa, "r") as archivo:
         return json.load(archivo)
-
 
 # Vamos a crear una función para mostrar las preguntas y su respectivas respuestas.
 def mostrar_pregunta(preguntas):
@@ -78,7 +87,7 @@ def main():
         # Con la opción uno iniciamos el cuestionario.
         if opcion == "1":
             nombre = input("Dime tu nombre: ")
-            aciertos = 0 # Inicializamos el contador de aciertos a 0
+            aciertos = 0 # Inicializamos el contador de aciertos a 0.
 
             # Recorremos todas las preguntas del archivo json.
             for x in preguntas:
