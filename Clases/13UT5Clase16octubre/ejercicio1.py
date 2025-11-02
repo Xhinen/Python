@@ -1,3 +1,8 @@
+""" Ejercicio 1 - Leer un archivo y contar líneas
+Escribe un programa que abra un archivo de texto, lea su contenido y cuente el número de líneas que contiene.
+El programa debe definir una función que realice esta tarea y luego imprima el resultado. """
+
+
 import os
 
 def count_lines(path):

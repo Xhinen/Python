@@ -1,3 +1,7 @@
+""" Ejercicio 6 - Buscar una palabra en un archivo
+Escribe un programa que abra un archivo de texto y busque todas las líneas que contienen una palabra específica. 
+El programa debe definir una función que reciba el nombre del archivo y la palabra a buscar, y luego imprima todas las líneas que contienen esa palabra. """
+
 import os
 
 def search_lines(path, word):
@@ -10,10 +14,7 @@ def search_lines(path, word):
     with open(path, "r") as file:
         for num, line in enumerate(file, start=1):
             if word in line:
-                line_splitted = line.split()
-                for i in range(len(line_splitted)):
-                    if word.lower() == line_splitted[i].lower():
-                        print(f"Linea {num}: Posición {len(" ".join(line_splitted[0:i+1]))+1-len(line_splitted[i])}")
+                print(f"Linea {num}: {line}", end="")
 
 
 path = input("Qué archivo quieres imprimir?\n")

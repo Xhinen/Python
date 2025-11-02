@@ -1,3 +1,7 @@
+""" Ejercicio 2 - Leer un archivo y contar líneas y palabras
+Escribe un programa que abra un archivo de texto, lea su contenido y cuente el número de líneas y palabras que contiene.
+El programa debe definir una función que realice esta tarea y luego imprima el resultado. """
+
 import os
 
 def count_lines_and_words(path):

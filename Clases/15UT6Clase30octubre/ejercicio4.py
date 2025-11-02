@@ -17,7 +17,7 @@ def move_file(path, new_path):
             raise FileNotFoundError("No existe el directorio de destino")
     if path == new_path:
 
-    pass
+        pass
 
 path = input("Introduce el archivo que quieres mover\n")
 new_path = input("Introduce la ruta donde quieres moverlo\n")

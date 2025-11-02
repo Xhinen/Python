@@ -1,4 +1,4 @@
-# Ejercicio 1 - Gestor de Archivos con Python usando el módulo
+# Ejercicio 1 - Gestor de Archivos con Python usando el módulo os
 import os
 
 def listar_archivo():

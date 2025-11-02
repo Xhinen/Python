@@ -1,3 +1,8 @@
+""" Ejercicio 5 - Censurar palabras en un archivo
+Escribe un programa que abra un archivo de texto y reemplace todas las ocurrencias de una palabra específica por otra palabra.
+El programa debe definir una función que reciba el nombre del archivo, la palabra a censurar y la palabra de reemplazo,
+y luego realice la censura en el archivo. """
+
 import os
 
 def replace_word(path, word_to_replace, new_word):
