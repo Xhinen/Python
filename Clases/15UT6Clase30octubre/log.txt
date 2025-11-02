@@ -1,0 +1,4 @@
+2025-11-02T11:46:42 Se ha loguado EXITOSAMENTE el usuario asires
+2025-11-02T11:46:51 Se ha intentado loguear un usuario NO EXISTENTE asdf
+2025-11-02T11:46:56 Se ha intentado loguear un usuario NO EXISTENTE zxcv
+2025-11-02T11:47:06 Se ha loguado EXITOSAMENTE el usuario damdawers

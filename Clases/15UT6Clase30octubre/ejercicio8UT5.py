@@ -20,7 +20,7 @@ usuarios = {
 """
 
 def verify_user(user, passw):
-    with open("log.txt", "a") as file:
+    with open("Clases/15UT6Clase30octubre/log.txt", "a") as file:
         if user not in usuarios.keys():
             file.write(f"{datetime.now().isoformat(timespec="seconds")} Se ha intentado loguear un usuario NO EXISTENTE {user}\n")
             raise ValueError("Acceso denegado")
