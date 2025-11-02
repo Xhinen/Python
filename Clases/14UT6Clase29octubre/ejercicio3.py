@@ -1,3 +1,6 @@
+""" Ejercicio 3 - Eliminar un archivo
+Escribe un script que reciba como argumento el nombre de un archivo y lo elimine del sistema de archivos. """
+
 import os
 
 def delete_file(path):

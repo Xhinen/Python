@@ -1,3 +1,6 @@
+""" Ejercicio 2 - Crear un directorio
+Escribe un script que reciba como argumento el nombre de un nuevo directorio y lo cree en el sistema de archivos. """
+
 import os
 
 def make_directory(path):

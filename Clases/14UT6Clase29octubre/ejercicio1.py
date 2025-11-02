@@ -1,3 +1,6 @@
+""" Ejercicio 1 - Listar archivos en un directorio
+Escribe un script que reciba como argumento el nombre de un directorio y liste todos los archivos y subdirectorios que contiene. """
+
 import os
 
 def list_directory(path):

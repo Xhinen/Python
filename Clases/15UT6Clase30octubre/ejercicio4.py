@@ -1,3 +1,6 @@
+""" Ejercicio 4 - Mover un archivo
+Escribe un script que reciba como argumentos el nombre de un archivo y un nuevo directorio, y mueva el archivo al nuevo directorio. """
+
 import os
 
 """ 
