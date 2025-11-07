@@ -106,7 +106,7 @@ def main():
             # Evitamos errores si el input está vacío
             if not elegir_opcion:
                 continue
-            opcion = int(elegir_opcion1)
+            opcion = int(elegir_opcion)
         except ValueError:
             # Gestionamos errores de entrada no numérica
             print("Error: Debes introducir un número válido.")
