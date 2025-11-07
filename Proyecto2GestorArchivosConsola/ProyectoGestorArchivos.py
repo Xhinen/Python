@@ -97,19 +97,19 @@ def main():
     
     # Bucle while del programa principal, lo he cogido del ejercicio1.py del tema UT4 Funciones y Módulos (12 de junio)
     
-    opcion = 0
-    while opcion != 7:
+    elegir_opcion = 0
+    while elegir_opcion != 7:
         mostrar_menu()
 
         try:
-            elegir_opcion = input("Escoge una opción (1-7): ")
+            opcion = input("Escoge una opción (1-7): ")
             # Evitamos errores si el input está vacío
-            if not elegir_opcion:
+            if not opcion:
                 continue
-            opcion = int(elegir_opcion)
+            elegir_opcion = int(opcion)
         except ValueError:
             # Gestionamos errores de entrada no numérica
-            print("Error: Debes introducir un número válido.")
+            print("\nError: Debes introducir un número del 1 al 7.")
             continue
 
         if opcion == 1:
@@ -128,7 +128,7 @@ def main():
             print("\nSaliendo del gestor de archivos. ¡Hasta luego Lucas!")
         else:
             # Gestionamos errores de opción no válida
-            print("Opción no válida. Por favor, introduce un número del 1 al 7.")
+            print("\nOpción no válida. Por favor, introduce un número del 1 al 7.")
 
 if __name__ == '__main__':
     main()
