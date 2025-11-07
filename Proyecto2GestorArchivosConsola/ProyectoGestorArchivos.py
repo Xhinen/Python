@@ -26,12 +26,56 @@ def mostrar_menu():
 # Añado las diferentes funciones para que el bucle principal del programa no me de error y así poder comprobar que funiona.
 
 def listar_contenido():
+    
+    # Con esta función vamos a listar el contenido del directorio actual, distinguiendo entre archivos y carpetas.
+    
+    try:
+        print("\n========================================")
+        print("<------ CONTENIDO DEL DIRECTORIO ------>")
+        print("========================================")
+        contenido = os.listdir(".")
+        if not contenido:
+            print("El directorio está vacío.")
+            return
 
-    pass
+        # Requisito: Indicar si es archivo o carpeta
+        for i in contenido:
+            try:
+                if os.path.isdir(i):
+                    print(f"[CARPETA] {i}")
+                else:
+                    print(f"[ARCHIVO] {i}")
+            except Exception:
+                # Puede fallar por enlaces simbólicos rotos, etc.
+                print(f"[DESCONOCIDO] {i}")
+
+    except PermissionError:
+        print("Error: No tienes permisos para leer este directorio.")
+    except Exception as e:
+        print(f"Error inesperado al listar contenido: {e}")
 
 def crear_directorio():
+    
+    # Crea un nuevo directorio en la ruta actual. (Similar a ejercicio1.py y ejercicio2.py que hicimos en clase)
+    
+    print("\n================================")
+    print("<------ CREAR DIRECTORIO ------>")
+    print("================================")
+    nombre = input("Introduce el nombre del nuevo directorio: ")
+    if not nombre:
+        print("Error: El nombre no puede estar vacío.")
+        return
 
-    pass
+    try:
+        os.mkdir(nombre)
+        print(f"Directorio '{nombre}' creado con éxito.")
+    except FileExistsError:
+        # Requisito: Manejar error de nombre existente
+        print(f"Error: El directorio '{nombre}' ya existe.")
+    except PermissionError:
+        print("Error: No tienes permisos para crear un directorio aquí.")
+    except Exception as e:
+        print(f"Error inesperado al crear directorio: {e}")
 
 def crear_archivo():
 
@@ -58,14 +102,14 @@ def main():
         mostrar_menu()
 
         try:
-            opcion_str = input("Escoge una opción (1-7): ")
-            # Evitar error si el input está vacío
-            if not opcion_str:
+            elegir_opcion = input("Escoge una opción (1-7): ")
+            # Evitamos errores si el input está vacío
+            if not elegir_opcion:
                 continue
-            opcion = int(opcion_str)
+            opcion = int(elegir_opcion1)
         except ValueError:
-            # Requisito: Gestionar error de entrada no numérica
-            print("❌ Error: Debes introducir un número válido.")
+            # Gestionamos errores de entrada no numérica
+            print("Error: Debes introducir un número válido.")
             continue
 
         if opcion == 1:
@@ -83,8 +127,8 @@ def main():
         elif opcion == 7:
             print("\nSaliendo del gestor de archivos. ¡Hasta luego Lucas!")
         else:
-            # Requisito: Gestionar error de opción no válida
-            print("❌ Opción no válida. Por favor, introduce un número del 1 al 7.")
+            # Gestionamos errores de opción no válida
+            print("Opción no válida. Por favor, introduce un número del 1 al 7.")
 
 if __name__ == '__main__':
     main()
