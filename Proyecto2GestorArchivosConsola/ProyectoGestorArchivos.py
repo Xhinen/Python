@@ -11,9 +11,9 @@ def mostrar_menu():
     print("<------ GESTOR DE ARCHIVOS v1.0 ------>")
     print("=======================================")
     try:
-        print(f"Ruta Actual: {os.getcwd()}")
+        print(f"\nRuta Actual: {os.getcwd()}")
     except Exception as e:
-        print(f"No se pudo obtener la ruta actual: {e}")
+        print(f"\nNo se pudo obtener la ruta actual: {e}")
 
     print("1. Listar contenido del directorio actual")
     print("2. Crear un nuevo directorio")
@@ -35,10 +35,10 @@ def listar_contenido():
         print("========================================")
         contenido = os.listdir(".")
         if not contenido:
-            print("El directorio está vacío.")
+            print("\nEl directorio está vacío.")
             return
 
-        # Requisito: Indicar si es archivo o carpeta
+        # Indicamos si es archivo o carpeta en el contenido del directorio que mostramos.
         for i in contenido:
             try:
                 if os.path.isdir(i):
@@ -50,9 +50,9 @@ def listar_contenido():
                 print(f"[DESCONOCIDO] {i}")
 
     except PermissionError:
-        print("Error: No tienes permisos para leer este directorio.")
+        print("\nError: No tienes permisos para leer este directorio.")
     except Exception as e:
-        print(f"Error inesperado al listar contenido: {e}")
+        print(f"\nError inesperado al listar contenido: {e}")
 
 def crear_directorio():
     
@@ -61,29 +61,74 @@ def crear_directorio():
     print("\n================================")
     print("<------ CREAR DIRECTORIO ------>")
     print("================================")
-    nombre = input("Introduce el nombre del nuevo directorio: ")
-    if not nombre:
-        print("Error: El nombre no puede estar vacío.")
+    nombre_directorio = input("Introduce el nombre del nuevo directorio: ")
+    if not nombre_directorio:
+        print("\nError: El campo 'nombre' no puede estar vacío.")
         return
 
     try:
-        os.mkdir(nombre)
-        print(f"Directorio '{nombre}' creado con éxito.")
+        os.mkdir(nombre_directorio)
+        print(f"\nDirectorio '{nombre_directorio}' creado con éxito.")
     except FileExistsError:
-        # Requisito: Manejar error de nombre existente
-        print(f"Error: El directorio '{nombre}' ya existe.")
+        # Manejamos errores de nombre existente y permisos.
+        print(f"\nError: El directorio '{nombre_directorio}' ya existe.")
     except PermissionError:
-        print("Error: No tienes permisos para crear un directorio aquí.")
+        print("\nError: No tienes permisos para crear un directorio aquí.")
     except Exception as e:
-        print(f"Error inesperado al crear directorio: {e}")
+        print(f"\nError inesperado al crear directorio: {e}")
 
 def crear_archivo():
+    
+    # Vamos crear un nuevo archivo de texto que nos permita escribir contenido en él.
+    
+    nombre_archivo = input("Introduce el nombre del nuevo archivo (ej. 'texto.txt'): ")
+    if not nombre_archivo:
+        print("\nError: El 'nombre' del archivo a crear no puede estar vacío.")
+        return
 
-    pass
+    if os.path.exists(nombre_archivo):
+        # Manejamos el error en el caso de que un archivo exista con el mismo nombre.
+        print(f"\nError: El archivo con nombre '{nombre_archivo}' ya existe.")
+        return
+
+    try:
+        # Escribir contenido en el archivo creado.
+        contenido = input("Escribe el contenido inicial (deja en blanco si no quieres): ")
+        with open(nombre_archivo, 'w', encoding='utf-8') as f:
+            f.write(contenido)
+        print(f"\nArchivo '{nombre_archivo}' creado con éxito.")
+    except PermissionError:
+        print("\nError: No tienes permisos para crear este archivo aquí.")
+    except Exception as e:
+        print(f"\nError inesperado al crear el archivo: {e}")
 
 def escribir_en_archivo():
+    
+    # Añadimos texto a un archivo existente sin sobreescribir el contenido que ya tiene.
+    
+    nombre_archivo = input("Introduce el nombre del archivo al que quieres añadir texto: ")
 
-    pass
+    try:
+        # Comprobamos que el archivo existe.
+        if not os.path.exists(nombre_archivo):
+            print(f"\nError: El archivo '{nombre_archivo}' no existe.")
+            return
+
+        # Comprobamos que es un archivo y no un carpeta.
+        if os.path.isdir(nombre_archivo):
+            print(f"\nError: '{nombre_archivo}' es un directorio, no es un archivo.")
+            return
+
+        # Añadimos contenido al archivo (append)
+        contenido_archivo = input("Escribe el texto que quieres añadir (se añadirá al final): ")
+        with open(nombre_archivo, 'a', encoding='utf-8') as f:
+            f.write("\n" + contenido_archivo)
+        print(f"\nTexto añadido a '{nombre_archivo}' con éxito.")
+
+    except PermissionError:
+        print(f"\nError: No tienes permisos para escribir en '{nombre_archivo}'.")
+    except Exception as e:
+        print(f"\nError inesperado al escribir en el archivo: {e}")
 
 def eliminar_elemento():
 
@@ -103,31 +148,31 @@ def main():
 
         try:
             opcion = input("Escoge una opción (1-7): ")
-            # Evitamos errores si el input está vacío
+            # Evitamos errores si en el input no se introduce nada.
             if not opcion:
                 continue
             elegir_opcion = int(opcion)
         except ValueError:
-            # Gestionamos errores de entrada no numérica
+            # Gestionamos errores de entrada que no sean números.
             print("\nError: Debes introducir un número del 1 al 7.")
             continue
 
-        if opcion == 1:
+        if elegir_opcion == 1:
             listar_contenido()
-        elif opcion == 2:
+        elif elegir_opcion == 2:
             crear_directorio()
-        elif opcion == 3:
+        elif elegir_opcion == 3:
             crear_archivo()
-        elif opcion == 4:
+        elif elegir_opcion == 4:
             escribir_en_archivo()
-        elif opcion == 5:
+        elif elegir_opcion == 5:
             eliminar_elemento()
-        elif opcion == 6:
+        elif elegir_opcion == 6:
             mostrar_informacion()
-        elif opcion == 7:
+        elif elegir_opcion == 7:
             print("\nSaliendo del gestor de archivos. ¡Hasta luego Lucas!")
         else:
-            # Gestionamos errores de opción no válida
+            # Gestionamos errores de opciones no válidas.
             print("\nOpción no válida. Por favor, introduce un número del 1 al 7.")
 
 if __name__ == '__main__':
