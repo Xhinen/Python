@@ -81,6 +81,9 @@ def crear_archivo():
     
     # Vamos crear un nuevo archivo de texto que nos permita escribir contenido en él.
     
+    print("\n=============================")
+    print("<------ CREAR ARCHIVO ------>")
+    print("=============================")
     nombre_archivo = input("Introduce el nombre del nuevo archivo (ej. 'texto.txt'): ")
     if not nombre_archivo:
         print("\nError: El 'nombre' del archivo a crear no puede estar vacío.")
@@ -106,6 +109,9 @@ def escribir_en_archivo():
     
     # Añadimos texto a un archivo existente sin sobreescribir el contenido que ya tiene.
     
+    print("\n===================================")
+    print("<------ ESCRIBIR EN ARCHIVO ------>")
+    print("===================================")
     nombre_archivo = input("Introduce el nombre del archivo al que quieres añadir texto: ")
 
     try:
@@ -131,12 +137,74 @@ def escribir_en_archivo():
         print(f"\nError inesperado al escribir en el archivo: {e}")
 
 def eliminar_elemento():
+    
+    # Elimina un archivo o un directorio (solo si está vacío). (ejercicio3.py del 29 de octubre)
 
-    pass
+    print("\n==========================================")
+    print("<------ ELIMINAR ARCHIVO O CARPETA ------>")
+    print("==========================================")
+    archivo_nombre = input("Introduce el nombre del archivo o directorio a eliminar: ")
+
+    try:
+        # Comprobamos si el archivo existe.
+        if not os.path.exists(archivo_nombre):
+            print(f"Error: '{archivo_nombre}' no existe.")
+            return
+
+        if os.path.isdir(archivo_nombre):
+            # Si es un directorio usaremos "rmdir".
+            os.rmdir(archivo_nombre)
+            print(f"Directorio '{archivo_nombre}' eliminado con éxito.")
+        else:
+            # Si es un archivo usaremos "remove".
+            os.remove(archivo_nombre)
+            print(f"Archivo '{archivo_nombre}' eliminado con éxito.")
+
+    except PermissionError:
+        print(f"Error: No tienes permisos para eliminar '{archivo_nombre}'.")
+    except OSError as e:
+        # OSError se lanzará si el directorio no está vacío.
+        print(f"Error: No se pudo eliminar '{archivo_nombre}'. ¿Quizás el directorio no está vacío? ({e})")
+    except Exception as e:
+        print(f"Error inesperado al eliminar: {e}")
 
 def mostrar_informacion():
+    
+    # Muestra el tipo (archivo/carpeta), tamaño y fecha de última modificación.
+    
+    print("\n===================================")
+    print("<------ MOSTRAR INFORMACIÓN ------>")
+    print("===================================")
+    nombre = input("Introduce el nombre del archivo o directorio: ")
 
-    pass
+    try:
+        # Comprobamos si existe.
+        if not os.path.exists(nombre):
+            print(f"Error: '{nombre}' no existe.")
+            return
+
+        # Obtenemos estadísticas del archivo/directorio.
+        stat = os.stat(nombre)
+
+        # Mostramos el tipo de archivo.
+        tipo = "Carpeta" if os.path.isdir(nombre) else "Archivo"
+
+        # Mostramos el tamaño.
+        tamaño = stat.st_size # Esto es para mostrarlo en bytes.
+
+        # Mostramos la fecha de modificación.
+        mod_time_stamp = stat.st_mtime
+        mod_fecha = datetime.fromtimestamp(mod_time_stamp).strftime('%Y-%m-%d %H:%M:%S')
+
+        print(f"\n--- Información de '{nombre}' ---")
+        print(f"  Tipo: {tipo}")
+        print(f"  Tamaño: {tamaño} bytes")
+        print(f"  Última modificación: {mod_fecha}")
+
+    except PermissionError:
+        print(f"Error: No tienes permisos para ver la información de '{nombre}'.")
+    except Exception as e:
+        print(f"Error inesperado al obtener información: {e}")
 
 def main():
     
