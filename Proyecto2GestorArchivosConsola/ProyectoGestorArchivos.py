@@ -1,4 +1,4 @@
-# Importamos los módulos necesarios
+# Importamos los módulos que necesitaremos
 import os
 from datetime import datetime
 
@@ -23,8 +23,6 @@ def mostrar_menu():
     print("6. Mostrar información del archivo/directorio")
     print("7. Salir")
 
-# Añado las diferentes funciones para que el bucle principal del programa no me de error y así poder comprobar que funiona.
-
 def listar_contenido():
     
     # Con esta función vamos a listar el contenido del directorio actual, distinguiendo entre archivos y carpetas.
@@ -46,7 +44,7 @@ def listar_contenido():
                 else:
                     print(f"[ARCHIVO] {i}")
             except Exception:
-                # Puede fallar por enlaces simbólicos rotos, etc.
+                # Por si puede fallar por enlaces simbólicos rotos, etc.
                 print(f"[DESCONOCIDO] {i}")
 
     except PermissionError:
